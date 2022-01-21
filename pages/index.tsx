@@ -3,45 +3,39 @@ import SelectBox from "../components/SelectBox";
 import InputFormWithTail from "../components/InputFormWithTail";
 import {useState} from "react";
 import CalculatedGains from "../components/CalculatedGains";
+import CalculationFacility from "../utils/CalculationFacility";
 
 export type frequency = `Monthly` | `Yearly`
 
-export interface Result {
+export interface YearlyResult {
+    year: number,
+    currentInvestedValue: number
+    yearGain: number,
+    totalCapital: number
+}
+
+export interface CalculatedResult {
     yearlyInvested: number,
     totalInvested: number,
     totalValue: number
     amountGained: number,
-    years: number
+    years: number,
+    firstYearGain: number,
+    additionalYearGain: number,
+    history: YearlyResult[],
+    interestRate: number
 }
 
 const IndexPage = () => {
 
     const [frequency, setFrequency] = useState<frequency>(`Monthly`)
     const [years, setYears] = useState<number>()
-    const [investedAmount, setInvestedAmount] = useState<number>()
+    const [amountToInvest, setAmountToInvest] = useState<number>()
     const [interestRate, setInterestRate] = useState<number>(0)
-    const [calculated, setCalculated] = useState<Result>({} as Result)
+    const [calculated, setCalculated] = useState<CalculatedResult>({} as CalculatedResult)
 
     const calculate = () => {
-        const addInterest = (currentValueInvested) =>
-            currentValueInvested * interestRate / 100
-
-        let total: number = 0
-        const yearlyInvestment: number = frequency === `Yearly`
-            ? investedAmount
-            : investedAmount * 12
-
-        for (let i: number = 1; i <= years; i++) {
-            const amountToAdd = addInterest(total + yearlyInvestment)
-            total += amountToAdd + yearlyInvestment
-        }
-        const result: Result = {
-            yearlyInvested: yearlyInvestment,
-            totalInvested: yearlyInvestment * years,
-            totalValue: parseInt((total).toFixed()),
-            amountGained: parseInt((total - (yearlyInvestment * years)).toFixed()),
-            years: years
-        }
+        const result = CalculationFacility.calculate(interestRate, frequency, amountToInvest, years)
         setCalculated(result)
     }
 
@@ -61,7 +55,7 @@ const IndexPage = () => {
                                                options={[`Monthly`, `Yearly`]}
                                                defaultValue={frequency} updateSelection={setFrequency}/>
                                     <InputForm name={`amount`} label={`Amount`} type={`number`} placeholder={`1000`}
-                                               value={investedAmount} updateValue={setInvestedAmount}/>
+                                               value={amountToInvest} updateValue={setAmountToInvest}/>
                                 </div>
                                 <div className={`mt-5`}>
                                     <h1 className="my-4 text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl">Investment

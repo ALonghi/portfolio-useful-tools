@@ -1,7 +1,8 @@
-import {Result} from "../pages";
+import {CalculatedResult} from "../pages";
+import CalculationFacility from "../utils/CalculationFacility";
 
 interface CalculatedGainsProps {
-    calculated: Result
+    calculated: CalculatedResult
 }
 
 const infoDivClasses = `flex flex-row justify-between w-10/12 font-light my-1`
@@ -39,14 +40,35 @@ const CalculatedGains: React.VFC<CalculatedGainsProps> = ({calculated}) => {
                         </div>
                     </li>
                 </ul>
-                {/*<div className="relative my-6">*/}
-                {/*        <div className="w-full border-t border-gray-200" />*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    { [...Array(calculated.years)].map((x, y) => {*/}
-                {/*        <p>In year</p>*/}
-                {/*    })}*/}
-                {/*</div>*/}
+                <div className="relative my-6">
+                    <div className="w-full border-t border-gray-200"/>
+                </div>
+                <div>
+                    <h3 className={`my-4 text-xl font-bold text-gray-900 tracking-tight sm:text-2xl`}>Yearly
+                        Details</h3>
+                    <ul>
+                        {[...Array(calculated.years)].map((x, index) =>
+                            <li>
+                                <div className={infoDivClasses}>
+                                    <p>In year {index + 1} gained</p>
+                                    <p>€ {calculated.history.find(year => year.year === index + 1).yearGain.toLocaleString(`it-IT`)}</p>
+                                </div>
+                            </li>
+                        )}
+                        <li>
+                            <div className={infoDivClasses}>
+                                <p className={`w-8/12`}>Additional year on plan ({calculated.years + 1}th) </p>
+                                <p>€ {CalculationFacility.calculate(
+                                    calculated.interestRate,
+                                    `Yearly`,
+                                    calculated.totalValue,
+                                    1
+                                ).amountGained.toLocaleString(`it-IT`)
+                                }</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
