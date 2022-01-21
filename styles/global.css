@@ -17,3 +17,9 @@ input {
 label {
     font-size: 0.9rem!important;
 }
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
