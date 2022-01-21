@@ -4,9 +4,7 @@ This is a really basic project calculating gains from investments based on compo
 
 ## Preview
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-typescript)
+Preview the example live on [Vercel](https://investment-gains-calculator.vercel.app/):
 
 ## Deploy your own
 

@@ -47,7 +47,7 @@ const IndexPage = () => {
 
     return (<>
             <div
-                className="bg-white min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8 bg-gray-100">
+                className="bg-white w-full min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8 bg-gray-100">
                 <div className={`w-11/12 mx-auto`}>
                     <main className="sm:flex">
                         <p className="text-4xl font-bold text-indigo-600 sm:text-5xl">Calculate your investment
