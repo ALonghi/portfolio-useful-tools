@@ -54,7 +54,7 @@ const IndexPage = () => {
                             gains</p>
                         <div className="sm:ml-6">
                             <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                                <h1 className="my-4 text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl">Amounts
+                                <h1 className="my-4 text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl">Amount
                                     to invest</h1>
                                 <div className={`flex flex-row`}>
                                     <SelectBox name={`frequency`} label={`Deposit Frequency`}
