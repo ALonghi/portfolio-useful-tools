@@ -59,6 +59,7 @@ const CalculatedGains: React.VFC<CalculatedGainsProps> = ({calculated}) => {
                             <div className={infoDivClasses}>
                                 <p className={`w-8/12`}>Additional year on plan ({calculated.years + 1}th) </p>
                                 <p>€ {CalculationFacility.calculate(
+                                    0,
                                     calculated.interestRate,
                                     `Yearly`,
                                     calculated.totalValue,

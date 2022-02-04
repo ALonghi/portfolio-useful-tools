@@ -5,12 +5,14 @@ export default class CalculationFacility {
         currentValueInvested * interestRate / 100
 
     static calculate = (
+        startCapital: number,
         interestRate: number,
         frequency: frequency,
         amountToInvest: number,
-        years: number): CalculatedResult => {
-
-        let total: number = 0
+        years: number
+        ): CalculatedResult => {
+            
+            let total: number = startCapital || 0
         let history: YearlyResult[] = []
         const yearlyInvestment: number = frequency === `Yearly`
             ? amountToInvest
