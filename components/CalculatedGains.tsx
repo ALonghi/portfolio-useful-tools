@@ -36,7 +36,7 @@ const CalculatedGains: React.VFC<CalculatedGainsProps> = ({calculated}) => {
                     <li>
                         <div className={infoDivClasses}>
                             <p>Increment of capital</p>
-                            <p className={`font-medium text-green-500`}>+ {(calculated.amountGained * 100 / calculated.totalInvested).toFixed()} %</p>
+                            <p className={`font-medium text-green-500`}>+ {(calculated.totalValue * 100 / calculated.totalInvested).toFixed()} %</p>
                         </div>
                     </li>
                 </ul>
