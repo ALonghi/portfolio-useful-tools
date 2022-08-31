@@ -10,9 +10,9 @@ export default class CalculationFacility {
         frequency: frequency,
         amountToInvest: number,
         years: number
-        ): CalculatedResult => {
-            
-            let total: number = startCapital || 0
+    ): CalculatedResult => {
+
+        let total: number = startCapital || 0
         let history: YearlyResult[] = []
         const yearlyInvestment: number = frequency === `Yearly`
             ? amountToInvest
@@ -31,11 +31,11 @@ export default class CalculationFacility {
         }
         const result: CalculatedResult = {
             yearlyInvested: yearlyInvestment,
-            totalInvested: yearlyInvestment * years,
+            totalInvested: yearlyInvestment * years + startCapital,
             totalValue: parseInt((total).toFixed()),
-            amountGained: parseInt((total - (yearlyInvestment * years)).toFixed()),
+            amountGained: parseInt((total - (yearlyInvestment * years) - startCapital).toFixed()),
             years: years,
-            firstYearGain: yearlyInvestment + CalculationFacility.addInterest(yearlyInvestment, interestRate),
+            firstYearGain: yearlyInvestment + CalculationFacility.addInterest(yearlyInvestment + startCapital, interestRate),
             additionalYearGain: total + CalculationFacility.addInterest(total, interestRate),
             history: history,
             interestRate: interestRate

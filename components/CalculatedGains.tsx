@@ -48,7 +48,7 @@ const CalculatedGains: React.VFC<CalculatedGainsProps> = ({calculated}) => {
                         Details</h3>
                     <ul>
                         {[...Array(calculated.years)].map((x, index) =>
-                            <li>
+                            <li key={index}>
                                 <div className={infoDivClasses}>
                                     <p>In year {index + 1} gained</p>
                                     <p>€ {calculated.history.find(year => year.year === index + 1).yearGain.toLocaleString(`it-IT`)}</p>
