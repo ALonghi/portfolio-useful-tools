@@ -103,6 +103,7 @@ const IndexPage = () => {
                         </div>
                     </main>
                 </div>
+                <p className={`absolute bottom-10 mb-2 ml-4  text-gray-400`}>v {process.env.NEXT_PUBLIC_APP_VERSION}</p>
             </div>
         </>
     )
