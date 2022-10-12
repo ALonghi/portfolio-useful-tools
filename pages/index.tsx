@@ -55,6 +55,7 @@ const IndexPage = () => {
                         <div className='max-w-xs'>
                             <p className="text-4xl font-bold text-indigo-600 sm:text-5xl">Calculate your investment
                                 gains</p>
+                            <p className={` bottom-10 mt-4 text-gray-400`}>v {process.env.NEXT_PUBLIC_APP_VERSION}</p>
                         </div>
 
                         <div className="sm:ml-6 w-max">
@@ -103,7 +104,6 @@ const IndexPage = () => {
                         </div>
                     </main>
                 </div>
-                <p className={`absolute bottom-10 mb-2 ml-4  text-gray-400`}>v {process.env.NEXT_PUBLIC_APP_VERSION}</p>
             </div>
         </>
     )
