@@ -71,9 +71,12 @@ const ImagesToolPage = () => {
                 </div>
                 <div className={`w-10/12 md:w-full mx-auto mt-4`}>
                     <div className={`flex justify-start md:justify-center 
-                flex-wrap gap-x-4 md:gap-x-6 gap-y-4`}>
-                        <SwitchWithLabel label={"Compress images"} updateSelection={(v) => setWithCompression(v)}
-                                         enabled={withCompression} classes={``}/>
+                flex-wrap gap-x-4 md:gap-x-12 gap-y-4`}>
+                        <div>
+                            <SwitchWithLabel label={"Compress images"} updateSelection={(v) => setWithCompression(v)}
+                                             enabled={withCompression} classes={``}/>
+                            <p className={`ml-1 font-extralight text-sm italic`}>With lossless quality</p>
+                        </div>
                         {/*<div className={`inline-flex flex-col items-start `}>*/}
                         {/*    <SwitchWithLabel label={"Resize images"} updateSelection={(v) => setWithResizing(v)}*/}
                         {/*                     enabled={withResizing}/>*/}
