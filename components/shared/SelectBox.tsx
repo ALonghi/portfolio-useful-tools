@@ -7,7 +7,7 @@ interface SelectBoxProps {
 }
 
 
-const SelectBox: React.VFC<SelectBoxProps> = (props) => {
+const SelectBox: React.FC<SelectBoxProps> = (props) => {
     return (
         <div className={`mx-2 w-full`}>
             <label htmlFor="location" className=" mb-2 block text-sm font-medium text-gray-700">

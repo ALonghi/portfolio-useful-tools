@@ -1,5 +1,5 @@
-import {CalculatedResult} from "../pages";
-import CalculationFacility from "../utils/CalculationFacility";
+import {CalculatedResult} from "@pages/index";
+import CalculationFacility from "@utils/CalculationFacility";
 
 interface CalculatedGainsProps {
     calculated: CalculatedResult

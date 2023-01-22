@@ -1,9 +1,9 @@
-import InputForm from '../components/InputForm';
-import SelectBox from "../components/SelectBox";
-import InputFormWithTail from "../components/InputFormWithTail";
+import InputForm from '@components/shared/InputForm';
+import SelectBox from "@components/shared/SelectBox";
+import InputFormWithTail from "@components/investments-gains/InputFormWithTail";
 import {useState} from "react";
-import CalculatedGains from "../components/CalculatedGains";
-import CalculationFacility from "../utils/CalculationFacility";
+import CalculatedGains from "@components/investments-gains/CalculatedGains";
+import CalculationFacility from "@utils/CalculationFacility";
 
 export type frequency = `Monthly` | `Yearly`
 
