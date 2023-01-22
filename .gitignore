@@ -85,3 +85,6 @@ typings/
 .next
 .idea
 node_modules
+_next
+.next
+out
