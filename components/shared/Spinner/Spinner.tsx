@@ -26,6 +26,7 @@ const Spinner: React.VFC<SpinnerProps> = ({removeMargin, size, classes}) => {
     return (
         <div className={`flex justify-center items-center ${classes!}`}>
             <ClipLoader size={size ? size : 50} color={"#34cbad"}
+                        // @ts-ignore
                         css={overriddenCss}/>
         </div>
     );

@@ -1,5 +1,3 @@
-"use client"
-
 import {useDropzone} from 'react-dropzone';
 
 import styled from 'styled-components';
@@ -60,7 +58,7 @@ function DropBox({onDrop}) {
         <>
             <section className="dropbox ">
                 <Container
-                    className="dropbox px-4 w-full mx-auto"
+                    className="dropbox !px-4 w-full mx-auto"
                     {...getRootProps({isDragAccept, isFocused, isDragReject})}
                 >
                     <input {...getInputProps()} />
