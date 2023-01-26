@@ -79,6 +79,7 @@ export default function Header() {
                   <Bars3Icon className="h-6 w-6" aria-hidden="true"/>
                 </Popover.Button>
               </div>
+                {/** Desktop **/}
               <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
                 <Popover.Group as="nav" className="flex space-x-10">
                   <Popover>
@@ -107,7 +108,13 @@ export default function Header() {
                     </div>
                   </Popover>
                 </Popover.Group>
+
                 <div className="flex items-center md:ml-12">
+                  <div className={`border-none text-center`}>
+                      {process.env.NEXT_PUBLIC_APP_VERSION &&
+                          <p className={`text-gray-200 ml-4 `}>v {process.env.NEXT_PUBLIC_APP_VERSION}</p>
+                      }
+                  </div>
                   <button
                       onClick={() => signOut()}
                       type="button"
@@ -122,6 +129,7 @@ export default function Header() {
             </div>
           </div>
 
+            {/** Mobile **/}
           <Transition
               as={Fragment}
               enter="duration-200 ease-out"
@@ -155,6 +163,7 @@ export default function Header() {
                       </Popover.Button>
                     </div>
                   </div>
+
                   <div className="mt-6 sm:mt-8">
                     <nav>
                       <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
@@ -169,7 +178,7 @@ export default function Header() {
                                       <item.icon className="h-6 w-6" aria-hidden="true"/>
                                   </div>
                                   <div
-                                      className="ml-4 text-base font-medium text-gray-900">{item.name} 2
+                                      className="ml-4 text-base font-medium text-gray-900">{item.name}
                                   </div>
                               </Link>
                           ))}
@@ -177,6 +186,13 @@ export default function Header() {
                     </nav>
                   </div>
                 </div>
+
+                <div className={`border-none text-center`}>
+                    {process.env.NEXT_PUBLIC_APP_VERSION &&
+                        <p className={`text-gray-200 ml-4 `}>v {process.env.NEXT_PUBLIC_APP_VERSION}</p>
+                    }
+                </div>
+
                 <div className="py-6 px-5">
                   <button
                       onClick={() => signOut()}
