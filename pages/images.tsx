@@ -62,7 +62,8 @@ const ImagesToolPage = () => {
                         <div>
                             <SwitchWithLabel label={"Compress images"} updateSelection={(v) => setWithCompression(v)}
                                              enabled={withCompression} classes={``}/>
-                            <p className={`ml-1 font-extralight text-sm italic`}>With almost lossless quality</p>
+                            <p className={`ml-1 font-extralight text-sm italic`}>With almost lossless quality
+                                ({quality}%)</p>
                         </div>
                         {/*<div className={`inline-flex flex-col items-start `}>*/}
                         {/*    <SwitchWithLabel label={"Resize images"} updateSelection={(v) => setWithResizing(v)}*/}
