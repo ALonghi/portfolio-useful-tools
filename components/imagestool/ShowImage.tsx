@@ -1,5 +1,5 @@
 import Image from './Image';
-import ImageFile from "../../model/imagetool/imagetool";
+import ImageFile from "@model/imagetool/ImageFile";
 
 
 interface ShowImageProps {

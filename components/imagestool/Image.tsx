@@ -1,5 +1,5 @@
 import Utils from "@utils/Utils";
-import ImageFile from "../../model/imagetool/imagetool";
+import ImageFile from "@model/imagetool/ImageFile";
 
 function humanFileSize(size: number) {
     const i = size == 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024));

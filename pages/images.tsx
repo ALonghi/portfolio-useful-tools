@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Dropzone from "@components/imagestool/Dropzone";
 import SwitchWithLabel from "@components/shared/SwitchWithLabel";
-import ImageFile from "../model/imagetool/imagetool";
+import ImageFile from "@model/imagetool/ImageFile";
 import Resizer from "react-image-file-resizer";
 import logging from "@utils/logging";
 

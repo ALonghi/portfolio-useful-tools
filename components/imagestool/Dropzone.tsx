@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import DropBox from "@components/imagestool/Dropbox";
 import ShowImage from "@components/imagestool/ShowImage";
-import ImageFile from "../../model/imagetool/imagetool";
+import ImageFile from "@model/imagetool/ImageFile";
 import {createNotification, setIsLoading, ToastData} from "@context/redux/UI/UISlice";
 import {nanoid} from "nanoid";
 import {useDispatch} from "react-redux";
