@@ -25,7 +25,7 @@ export default function Dropzone({processImage}: DropzoneProps) {
                 setImages((prevState) => [
                     ...prevState,
                     {
-                        id: index,
+                        id: nanoid(12),
                         name: file.name,
                         src: e.target.result,
                         size: file.size,

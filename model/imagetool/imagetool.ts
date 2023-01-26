@@ -1,5 +1,5 @@
 export default interface ImageFile {
-    id: number,
+    id: string,
     name: string,
     src: string,
     compressedBlob?: File,
