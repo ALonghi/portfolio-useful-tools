@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import {Popover, Transition} from '@headlessui/react'
-import {Bars3Icon, ChartBarIcon, CursorArrowRaysIcon, XMarkIcon,} from '@heroicons/react/24/outline'
+import {Bars3Icon, ChartBarIcon, CurrencyDollarIcon, CursorArrowRaysIcon, XMarkIcon,} from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import AuthService from "../../service/authService";
 import {useDispatch, useSelector} from "react-redux";
@@ -20,6 +20,11 @@ const navigation = [
         name: 'Image tool',
         href: '/images',
         icon: CursorArrowRaysIcon,
+    },
+    {
+        name: 'Income tool',
+        href: '/income',
+        icon: CurrencyDollarIcon,
     },
 ]
 
@@ -88,7 +93,7 @@ export default function Header() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="mx-4 flex flex-col justify-between rounded-lg  hover:bg-gray-50"
+                                className="hover:underline mx-4 flex flex-col justify-between rounded-lg  hover:bg-gray-50"
                             >
                                 <div className="flex md:flex-col">
                                   <span

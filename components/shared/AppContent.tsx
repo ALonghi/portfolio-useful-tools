@@ -36,15 +36,12 @@ export default function AppContent(props) {
                             })
                     }
                     if (user) {
-                        const ids = process.env.NEXT_PUBLIC_FIREBBASE_ADMIN_IDS
-                        if (ids?.includes(user.uid)) {
-                            logging.info(`Logged in ${user?.uid?.substring(0, 3)}`)
-                            // User is signed in, see docs for a list of available properties
-                            // https://firebase.google.com/docs/reference/js/firebase.User
-                            const userId = user.uid;
-                            dispatch(saveAuthUser({userId}))
-                            await checkForCorrectRoute()
-                        } else await logoutAndRedirect()
+                        logging.info(`Logged in ${user?.uid?.substring(0, 3)}`)
+                        // User is signed in, see docs for a list of available properties
+                        // https://firebase.google.com/docs/reference/js/firebase.User
+                        const userId = user.uid;
+                        dispatch(saveAuthUser({userId}))
+                        await checkForCorrectRoute()
                     } else await logoutAndRedirect()
                 });
             }
