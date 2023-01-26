@@ -108,7 +108,8 @@ const IndexPage = () => {
 
                     <div
                         className={`inline-flex w-full text-left overflow-hidden flex justify-start whitespace-nowrap overflow-y-clip`}>
-                        <p className={`text-gray-800 w-full text-left overflow-hidden`}>{Utils.getCapitalized(m.name)}
+                        <p className={`text-gray-800 w-full text-left overflow-hidden`}>
+                            {Utils.getCapitalized(m.name).substring(0, 10)}..
                         </p>
                     </div>
                     <p className={`inline-flex min-w-fit ml-4 text-gray-700`}>{Utils.formatAmount(m.amount)} CHF</p>
