@@ -4,19 +4,14 @@ import SwitchWithLabel from "@components/shared/SwitchWithLabel";
 import ImageFile from "../model/imagetool/imagetool";
 import Resizer from "react-image-file-resizer";
 import logging from "@utils/logging";
-import Spinner from "@components/shared/Spinner/Spinner";
 
 const ImagesToolPage = () => {
 
     const [withCompression, setWithCompression] = useState<boolean>(true)
     const [withConvertToWebp, setWithConvertToWebp] = useState<boolean>(true)
-    const [quality, setQuality] = useState<number>(97)
-
-    const [showSpinner, setShowSpinner] = useState<boolean>(false)
-
+    const [quality, setQuality] = useState<number>(98)
 
     const process = (img: ImageFile): Promise<ImageFile> => {
-        setShowSpinner(true)
         try {
             return new Promise((resolve, reject) => {
                 Resizer.imageFileResizer(
@@ -34,7 +29,6 @@ const ImagesToolPage = () => {
                             hadErrors: false,
                             compressedBlob: res
                         }
-                        setShowSpinner(false)
                         resolve(processed)
                     },
                     "file"
@@ -49,19 +43,12 @@ const ImagesToolPage = () => {
                 wasProcessed: true,
                 hadErrors: true
             }
-            setShowSpinner(false)
             return Promise.resolve(processed)
         }
 
     }
 
     return (<>
-            {showSpinner &&
-                <>
-                  <div className={`z-40 bg-black opacity-60 fixed w-full h-full top-0 left-0`}/>
-                  <Spinner classes={`z-50 fixed`} size={90} removeMargin/>
-                </>
-            }
             <div className={`flex flex-col max-w-full`}>
                 <p className={`mt-12 text-3xl text-center`}>
                     Compress and resize multiple images at once
@@ -75,7 +62,7 @@ const ImagesToolPage = () => {
                         <div>
                             <SwitchWithLabel label={"Compress images"} updateSelection={(v) => setWithCompression(v)}
                                              enabled={withCompression} classes={``}/>
-                            <p className={`ml-1 font-extralight text-sm italic`}>With lossless quality</p>
+                            <p className={`ml-1 font-extralight text-sm italic`}>With almost lossless quality</p>
                         </div>
                         {/*<div className={`inline-flex flex-col items-start `}>*/}
                         {/*    <SwitchWithLabel label={"Resize images"} updateSelection={(v) => setWithResizing(v)}*/}

@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import DropBox from "@components/imagestool/Dropbox";
 import ShowImage from "@components/imagestool/ShowImage";
 import ImageFile from "../../model/imagetool/imagetool";
-import {createNotification, ToastData} from "@context/redux/toast/toastSlice";
+import {createNotification, setIsLoading, ToastData} from "@context/redux/UI/UISlice";
 import {nanoid} from "nanoid";
 import {useDispatch} from "react-redux";
 import JSZip from "jszip";
@@ -17,6 +17,7 @@ export default function Dropzone({processImage}: DropzoneProps) {
     const dispatch = useDispatch()
 
     const onDrop = useCallback((acceptedFiles) => {
+        dispatch(setIsLoading(true))
         acceptedFiles.map((file: Blob, index: number) => {
             const reader = new FileReader();
 
@@ -37,9 +38,11 @@ export default function Dropzone({processImage}: DropzoneProps) {
             reader.readAsDataURL(file);
             return file;
         });
+        dispatch(setIsLoading(false))
     }, []);
 
     const processAll = async () => {
+        dispatch(setIsLoading(true))
         try {
             const processedImgs = await Promise.all(images.map(async (image) => {
                     try {
@@ -77,6 +80,7 @@ export default function Dropzone({processImage}: DropzoneProps) {
                 }
                 createNotification(dispatch, notification)
             }
+            dispatch(setIsLoading(false))
         }
 
     }
@@ -85,7 +89,11 @@ export default function Dropzone({processImage}: DropzoneProps) {
         const zip = new JSZip();
         const img = zip.folder("images")
         images.forEach(image => {
-            img.file(image.name + "-compressed.webp", image.compressedBlob, {compression: "STORE"})
+            img.file(
+                image.name + "-compressed.webp",
+                image.compressedBlob,
+                {compression: "STORE", base64: true}
+            )
         })
         zip
             .generateAsync({type: "blob"})

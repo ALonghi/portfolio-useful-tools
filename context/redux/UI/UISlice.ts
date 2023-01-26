@@ -12,12 +12,14 @@ export interface ToastData {
     duration?: number,
 }
 
-export interface ToastState {
-    events: ToastData[]
+export interface UIState {
+    events: ToastData[],
+    isLoading: boolean
 }
 
-export const initialState: ToastState = {
-    events: []
+export const initialState: UIState = {
+    events: [],
+    isLoading: false
 }
 
 
@@ -37,8 +39,8 @@ export const deleteNotification = (dispatch, notificationId: string) => {
     }, 1000)
 }
 
-export const toastSlice = createSlice({
-    name: 'toast',
+export const UISlice = createSlice({
+    name: 'ui',
     initialState,
     reducers: {
         addNotificationEvent: (state, {payload: newEvent}: PayloadAction<ToastData>) => {
@@ -53,6 +55,9 @@ export const toastSlice = createSlice({
         clearNotificationEventById: (state, {payload: eventId}: PayloadAction<string>) => {
             state.events = state.events.filter(e => e.id != eventId)
         },
+        setIsLoading: (state, {payload: isLoading}: PayloadAction<boolean>) => {
+            state.isLoading = isLoading
+        },
     },
 })
 
@@ -60,9 +65,11 @@ export const toastSlice = createSlice({
 export const {
     addNotificationEvent,
     clearNotificationEventById,
-    hideNotificationById
-} = toastSlice.actions
-export const toastReducer = toastSlice.reducer
+    hideNotificationById,
+    setIsLoading
+} = UISlice.actions
+export const uiReducer = UISlice.reducer
 
-export const eventsSelector = (state: RootState) => state.toastReducer?.events
-export const lastEventSelector = (state: RootState) => state.toastReducer?.events[state.toastReducer?.events?.length - 1]
+export const eventsSelector = (state: RootState) => state.uiReducer?.events
+export const isLoadingSelector = (state: RootState) => state.uiReducer?.isLoading
+export const lastEventSelector = (state: RootState) => state.uiReducer?.events[state.toastReducer?.events?.length - 1]

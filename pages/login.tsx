@@ -1,6 +1,6 @@
 import AuthService from "../service/authService";
 import {useEffect, useState} from "react";
-import {createNotification, ToastData} from "@context/redux/toast/toastSlice";
+import {createNotification, ToastData} from "@context/redux/UI/UISlice";
 import {nanoid} from "nanoid";
 import {useDispatch, useSelector} from "react-redux";
 import {saveAuthUser, userStateSelector} from "@context/redux/user/userSlice";

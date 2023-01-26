@@ -3,7 +3,7 @@ import {Transition} from '@headlessui/react'
 import {CheckCircleIcon, ExclamationCircleIcon} from '@heroicons/react/24/outline'
 import {XMarkIcon} from '@heroicons/react/24/solid'
 import css from "./NotificationToast.module.scss"
-import {deleteNotification, ToastData} from "@context/redux/toast/toastSlice";
+import {deleteNotification, ToastData} from "@context/redux/UI/UISlice";
 import {useDispatch} from "react-redux";
 import Utils from "@utils/Utils";
 

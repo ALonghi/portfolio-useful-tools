@@ -5,7 +5,7 @@ import Link from 'next/link'
 import AuthService from "../../service/authService";
 import {useDispatch, useSelector} from "react-redux";
 import {revokeAuthentication, userIsAuthSelector} from "@context/redux/user/userSlice";
-import {createNotification, ToastData} from "@context/redux/toast/toastSlice";
+import {createNotification, ToastData} from "@context/redux/UI/UISlice";
 import {nanoid} from "nanoid";
 import logging from "@utils/logging";
 import router from "next/router";

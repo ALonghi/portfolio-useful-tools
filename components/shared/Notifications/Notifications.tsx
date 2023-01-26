@@ -1,10 +1,10 @@
 import React from 'react'
-import {eventsSelector, ToastData} from "@context/redux/toast/toastSlice";
+import {eventsSelector, ToastData} from "@context/redux/UI/UISlice";
 import {useSelector} from "react-redux";
 import NotificationToast from "@components/shared/Notifications/NotificationToast/NotificationToast";
 
 
-const Notifications: React.VFC = () => {
+const Notifications: React.FC = () => {
     const toastNotifications = useSelector(eventsSelector)
 
     return (

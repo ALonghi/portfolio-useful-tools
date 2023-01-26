@@ -1,9 +1,9 @@
 import {combineReducers} from '@reduxjs/toolkit'
-import {toastReducer} from "@context/redux/toast/toastSlice";
+import {uiReducer} from "@context/redux/UI/UISlice";
 import {userReducer} from "@context/redux/user/userSlice";
 
 const rootReducer = combineReducers({
-    toastReducer,
+    uiReducer: uiReducer,
     userReducer
 })
 

@@ -7,12 +7,14 @@ import {revokeAuthentication, saveAuthUser, setUserStateAsync, userStateSelector
 import {getAuth, onAuthStateChanged} from "@firebase/auth";
 import AuthService from "@service/authService";
 import logging from "@utils/logging";
+import {isLoadingSelector} from "@context/redux/UI/UISlice";
 
 export default function AppContent(props) {
     const router = useRouter()
     const dispatch = useDispatch()
 
     const userState = useSelector(userStateSelector)
+    const isLoading = useSelector(isLoadingSelector)
 
     useEffect(() => {
         dispatch(setUserStateAsync(true))
@@ -81,6 +83,12 @@ export default function AppContent(props) {
 
     return (
         <main className={`flex flex-row min-h-max w-full relative`}>
+            {isLoading &&
+                <>
+                  <div className={`z-40 bg-black opacity-80 fixed w-full h-full top-0 left-0`}/>
+                  <Spinner classes={`z-50 fixed top-1/2 left-1/2`} size={90} removeMargin/>
+                </>
+            }
             <Notifications/>
             {router.isFallback || userState.isAsync
                 ? <Spinner size={100} classes={`m-auto mt-20`}/>
