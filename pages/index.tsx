@@ -54,7 +54,7 @@ const IndexPage = () => {
                     <main className="sm:flex">
                         <div className='max-w-xs'>
                             <p className="text-4xl font-bold text-indigo-600 sm:text-5xl">Calculate your investment
-                                gains</p>
+                                compound gains</p>
                             <p className={` bottom-10 mt-4 text-gray-400`}>v {process.env.NEXT_PUBLIC_APP_VERSION}</p>
                         </div>
 
@@ -73,7 +73,8 @@ const IndexPage = () => {
                                                options={[`Monthly`, `Yearly`]}
                                                defaultValue={frequency} updateSelection={setFrequency}/>
                                     <InputForm name={`amount`} label={`Amount`} type={`number`} placeholder={`1000`}
-                                               value={amountToInvest} updateValue={setAmountToInvest}/>
+                                               value={amountToInvest} updateValue={setAmountToInvest}
+                                               inputClasses={`max-w-[8rem]`}/>
                                 </div>
                                 <div className={`mt-5`}>
                                     <h1 className="my-4 text-2xl font-bold text-gray-900 tracking-tight sm:text-3xl">Investment
@@ -84,7 +85,7 @@ const IndexPage = () => {
                                 </div>
                                 <div className={`mt-5`}>
                                     <InputForm name={`years`} label={`Years to keep the money invested`} type={`number`}
-                                               placeholder={`10`}
+                                               placeholder={`10`} inputClasses={`max-w-[6rem]`}
                                                value={years} updateValue={setYears}/>
                                 </div>
                                 <button

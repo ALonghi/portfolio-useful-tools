@@ -23,9 +23,12 @@ Then execute the following command in your shell
 npm run dev
 ```
 
-## Deploy
+## Preview
 
-Project is deployed automatically with Vercel.
+![invest-desktop](./docs/invest-desktop.png)
+![invest-mobile](./docs/invest-mobile.png)
+![images-desktop](./docs/images-desktop.png)
+![images-mobile](./docs/images-mobile.png)
 
 
 
