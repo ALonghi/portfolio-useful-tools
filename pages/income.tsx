@@ -104,21 +104,24 @@ const IndexPage = () => {
         {movs.map(m =>
             <div key={m.id}
                  className={`flex items-center justify-end gap-1.5 hover:bg-gray-200 py-2 px-4 w-full m-0 rounded-lg cursor-pointer`}>
-                <div onClick={() => focusMovement(m.id)} className={`flex items-center w-full`}>
+                <div onClick={() => focusMovement(m.id)} className={`flex items-center justify-between w-full`}>
 
                     <div
-                        className={`inline-flex w-full text-left overflow-hidden flex justify-start whitespace-nowrap overflow-y-clip`}>
-                        <p className={`text-gray-800 w-full text-left overflow-hidden`}>
-                            {Utils.getCapitalized(m.name).substring(0, 10)}..
+                        className={`inline-flex max-w-[7rem] sm:max-w-full w-full text-left flex justify-start whitespace-nowrap 
+                        overflow-y-clip `}>
+                        <p className={`text-gray-800 w-full text-left truncate`}>
+                            {Utils.getCapitalized(m.name)}
                         </p>
                     </div>
-                    <p className={`inline-flex min-w-fit ml-4 text-gray-700`}>{Utils.formatAmount(m.amount)} CHF</p>
-                    <p className={`inline-flex  ml-3 text-white ${m.reason === "necessary" ? "bg-blue-500" : "bg-yellow-400"} font-light
+                    <div className={`ml-auto flex flex-row flex-1 flex-nowrap justify-end items-center min-w-fit mr-2`}>
+                        <p className={`inline-flex  ml-4 text-gray-700`}>{Utils.formatAmount(m.amount)} CHF</p>
+                        <p className={`inline-flex  ml-3 text-white ${m.reason === "necessary" ? "bg-blue-500" : "bg-yellow-400"} font-light
                 text-xs rounded-full py-0.5 px-1.5`}>
-                        {m.reason === "necessary" ? "N" : "A"}
-                    </p>
+                            {m.reason === "necessary" ? "N" : "A"}
+                        </p>
+                    </div>
                 </div>
-                <div onClick={() => toggleInactiveStatus(m)} className={`w-min  ml-8`}>
+                <div onClick={() => toggleInactiveStatus(m)} className={`w-min sm:ml-8`}>
                     {m.isInactive
                         ? <EyeSlashIcon className={`cursor-pointer block opacity-40`} height={20}/>
                         : <EyeIcon className={`cursor-pointer block opacity-40`} height={20}/>
