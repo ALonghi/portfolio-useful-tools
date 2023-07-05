@@ -1,8 +1,8 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 // If you enabled Analytics in your project, add the Firebase SDK for Analytics
 
-import {getApp, getApps, initializeApp} from 'firebase/app';
-import {collection, getFirestore} from 'firebase/firestore';
+import {getApp, getApps, initializeApp} from "firebase/app";
+import {collection, getFirestore} from "firebase/firestore";
 // Required for side-effects
 import "firebase/firestore";
 
@@ -19,22 +19,16 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-
 const initializeFirebase = () => {
-  if (!getApps().length) return initializeApp(firebaseConfig)
-  else return getApp()
-}
+  if (!getApps().length) return initializeApp(firebaseConfig);
+  else return getApp();
+};
 
 const app = initializeFirebase();
 const db = getFirestore(app);
 
 // collection references
-const movementsCollection = collection(db, "movements")
-
+const movementsCollection = collection(db, "movements");
 
 // export utils/refs
-export {
-  initializeFirebase,
-  db,
-  movementsCollection,
-};
+export {initializeFirebase, db, movementsCollection};

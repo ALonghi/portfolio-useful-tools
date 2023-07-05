@@ -7,67 +7,63 @@ import {saveAuthUser, userStateSelector} from "@context/redux/user/userSlice";
 import {useRouter} from "next/navigation";
 
 export default function Login() {
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const dispatch = useDispatch();
+    const router = useRouter();
 
-    const [email, setEmail] = useState<string>("")
-    const [password, setPassword] = useState<string>("")
-    const dispatch = useDispatch()
-    const router = useRouter()
-
-    const userState = useSelector(userStateSelector)
+    const userState = useSelector(userStateSelector);
 
     useEffect(() => {
         if (userState.isAuthenticated) {
-            const previousPage = sessionStorage.getItem(`previousPage`)
+            const previousPage = sessionStorage.getItem(`previousPage`);
             if (previousPage && previousPage !== "/login")
-                router.replace(previousPage)
-            else router.replace(`/`)
+                router.replace(previousPage);
+            else router.replace(`/`);
         }
-    }, [userState.isAuthenticated])
+    }, [userState.isAuthenticated]);
 
     const inputIsValid = (): boolean => {
-        return email?.length > 0 && password?.length > 0
-    }
+        return email?.length > 0 && password?.length > 0;
+    };
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (inputIsValid()) {
-            await AuthService
-                .loginWithEmail(email, password)
-                .then(userId => {
-                    console.log(`@@ user id ${userId}`)
-                    dispatch(saveAuthUser({userId: userId}))
+            await AuthService.loginWithEmail(email, password)
+                .then((userId) => {
+                    console.log(`@@ user id ${userId}`);
+                    dispatch(saveAuthUser({userId: userId}));
                 })
-                .then(_ => {
+                .then((_) => {
                     const notification: ToastData = {
                         id: nanoid(16),
                         details: "Successfully logged in.",
                         type: `success`,
                         hidden: false,
-                    }
-                    createNotification(dispatch, notification)
-                    return router.replace("/")
+                    };
+                    createNotification(dispatch, notification);
+                    return router.replace("/");
                 })
-                .catch(err => {
-                    const msg = `Sign in error: ${err.message || err}`
+                .catch((err) => {
+                    const msg = `Sign in error: ${err.message || err}`;
                     const notification: ToastData = {
                         id: nanoid(16),
                         details: msg,
                         type: `error`,
                         hidden: false,
-                    }
-                    createNotification(dispatch, notification)
-                })
+                    };
+                    createNotification(dispatch, notification);
+                });
         } else {
             const notification: ToastData = {
                 id: nanoid(16),
                 details: "You need a valid email and password to log in.",
                 type: `info`,
                 hidden: false,
-            }
-            createNotification(dispatch, notification)
+            };
+            createNotification(dispatch, notification);
         }
-
-
-    }
+    };
 
     return (
         <>
@@ -78,15 +74,19 @@ export default function Login() {
                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                         alt="Your Company"
                     />
-                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your
-                        account</h2>
+                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                        Sign in to your account
+                    </h2>
                 </div>
 
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                         <form className="space-y-6" onSubmit={handleSubmit} method="POST">
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                <label
+                                    htmlFor="email"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
                                     Email address
                                 </label>
                                 <div className="mt-1">
@@ -104,7 +104,10 @@ export default function Login() {
                             </div>
 
                             <div>
-                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                                <label
+                                    htmlFor="password"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
                                     Password
                                 </label>
                                 <div className="mt-1">
@@ -130,10 +133,9 @@ export default function Login() {
                                 </button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }

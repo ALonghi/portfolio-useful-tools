@@ -6,11 +6,11 @@
 
 ### Technologies
 
-- Typescript - *version* `4.9.x`
-- React - *version* `18.x`
-- NextJS - *version* `13.x`
-- Firebase - *version* `9.x`
-- TailwindCSS - *version* `3.x`
+- Typescript - _version_ `4.9.x`
+- React - _version_ `18.x`
+- NextJS - _version_ `13.x`
+- Firebase - _version_ `9.x`
+- TailwindCSS - _version_ `3.x`
 
 ## How to run
 
@@ -29,6 +29,3 @@ npm run dev
 ![invest-mobile](./docs/invest-mobile.png)
 ![images-desktop](./docs/images-desktop.png)
 ![images-mobile](./docs/images-mobile.png)
-
-
-

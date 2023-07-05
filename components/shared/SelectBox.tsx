@@ -1,16 +1,18 @@
 interface SelectBoxProps {
-    label: string,
-    name: string,
-    options: string[],
-    defaultValue: string,
-    updateSelection: Function
+    label: string;
+    name: string;
+    options: string[];
+    defaultValue: string;
+    updateSelection: Function;
 }
-
 
 const SelectBox: React.FC<SelectBoxProps> = (props) => {
     return (
         <div className={`mx-2 w-full`}>
-            <label htmlFor="location" className=" mb-2 block text-sm font-medium text-gray-700">
+            <label
+                htmlFor="location"
+                className=" mb-2 block text-sm font-medium text-gray-700"
+            >
                 {props.label}
             </label>
             <select
@@ -20,12 +22,12 @@ const SelectBox: React.FC<SelectBoxProps> = (props) => {
                 defaultValue={props.defaultValue}
                 onChange={(e) => props.updateSelection(e.target.value)}
             >
-                {props.options.map((option, index) =>
+                {props.options.map((option, index) => (
                     <option key={index}>{option}</option>
-                )}
+                ))}
             </select>
         </div>
-    )
-}
+    );
+};
 
-export default SelectBox
+export default SelectBox;

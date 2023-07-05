@@ -1,20 +1,20 @@
-import {Fragment} from 'react'
-import {Transition} from '@headlessui/react'
-import {CheckCircleIcon, ExclamationCircleIcon} from '@heroicons/react/24/outline'
-import {XMarkIcon} from '@heroicons/react/24/solid'
-import css from "./NotificationToast.module.scss"
+import {Fragment} from "react";
+import {Transition} from "@headlessui/react";
+import {CheckCircleIcon, ExclamationCircleIcon,} from "@heroicons/react/24/outline";
+import {XMarkIcon} from "@heroicons/react/24/solid";
+import css from "./NotificationToast.module.scss";
 import {deleteNotification, ToastData} from "@context/redux/UI/UISlice";
 import {useDispatch} from "react-redux";
 import Utils from "@utils/Utils";
 
 interface NotificationToastProps {
-    notification: ToastData
+    notification: ToastData;
 }
 
 const NotificationToast: React.VFC<NotificationToastProps> = ({
-                                                                  notification
+                                                                  notification,
                                                               }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -42,24 +42,34 @@ const NotificationToast: React.VFC<NotificationToastProps> = ({
                                     : notification.type === `info`
                                         ? `bg-yellow-200`
                                         : `bg-red-400`,
-                                "w-full shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden")}>
+                                "w-full shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden"
+                            )}
+                        >
                             <div className="p-3">
                                 <div className="flex items-center justify-center">
                                     <div className="flex-shrink-0">
-                                        {notification.type === `success`
-                                            ? <CheckCircleIcon className="h-6 w-6 text-black-800" aria-hidden="true"/>
-                                            : <ExclamationCircleIcon className="h-6 w-6 text-black-800"
-                                                                     aria-hidden="true"/>
-                                        }
+                                        {notification.type === `success` ? (
+                                            <CheckCircleIcon
+                                                className="h-6 w-6 text-black-800"
+                                                aria-hidden="true"
+                                            />
+                                        ) : (
+                                            <ExclamationCircleIcon
+                                                className="h-6 w-6 text-black-800"
+                                                aria-hidden="true"
+                                            />
+                                        )}
                                     </div>
                                     <div className="ml-4 w-0 flex-1 pt-0.5 w-10/12 ">
-                                        <p className=" text-sm text-black-900">{notification.details}</p>
+                                        <p className=" text-sm text-black-900">
+                                            {notification.details}
+                                        </p>
                                     </div>
                                     <div className="ml-4 flex-shrink-0 flex">
                                         <button
                                             className=" rounded-md inline-flex text-black-900-400 hover:text-black-900-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                             onClick={() => {
-                                                deleteNotification(dispatch, notification.id)
+                                                deleteNotification(dispatch, notification.id);
                                             }}
                                         >
                                             <span className="sr-only">Chiudi</span>
@@ -73,7 +83,7 @@ const NotificationToast: React.VFC<NotificationToastProps> = ({
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default NotificationToast
+export default NotificationToast;

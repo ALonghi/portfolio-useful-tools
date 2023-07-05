@@ -1,12 +1,13 @@
 {
   "private": true,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "format": "rm -rf .next out && npx prettier --write ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
