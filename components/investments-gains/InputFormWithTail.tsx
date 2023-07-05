@@ -20,7 +20,7 @@ const InputFormWithTail: React.FC<InputFormWithTailProps> = (props) => {
                   : `flex-col`
           }  align-middle gap-x-8 gap-y-3`}
       >
-        <div className={`flex items-center`}>
+        <div className={`flex items-center w-full`}>
           <label htmlFor={props.name} className="text-sm text-gray-700">
             {props.label}
           </label>
